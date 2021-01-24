@@ -11,7 +11,7 @@ createServer((request, response) => {
         if (err.status != null) return err;
         return {status: 500, body: String(err)};
     }).then(({body, status = 200, type="text/plain"}) => {
-        response.writeHead(status, {"Content-Type": type});
+        response.writeHead(status, { 'Content-Type': type, 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'PUT, GET, MKCOL, OPTIONS, DELETE'});
         if (body && body.pipe) body.pipe(response);
         else response.end(body);
     })
