@@ -1,8 +1,86 @@
 body {
-    background-color: orange;
+    background-color: rosybrown;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+li {
+    background-color: plum;
+    border: 2px solid purple;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0.5rem
+}
+
+li > p {
+    display: inline-block;
+    margin-left: 3rem;
+}
+
+li > button {
+    border: none;
+    border-radius: 15%;
+    background-color: black;
+    color: white;
+    margin-right: 3rem;
+}
+
 textarea {
     background-color: white;
-    height: 400px;
-    width: 500px;
+    min-height: 600px;
+    padding: 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
+#manager {
+    margin: 5rem auto;
+    width: 60vw;
+}
+
+#manager > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#create-element {
+    align-self: flex-end;
+}
+
+#create-element > button {
+    border: none;
+    background-color: rebeccapurple;
+    border-radius: 15%;
+    color: white;
+    margin: 0 3rem 0 1rem;
+    padding: 1rem;
+}
+
+#create-element > input {
+    border: 2px solid rebeccapurple;
+    padding: 1rem;
+}
+
+#button-row {
+    margin: 1rem auto;
+}
+
+#button-row > button {
+    background-color: rebeccapurple;
+    border: none;
+    border-radius: 15%;
+    color: white;
+    margin: 0 0.5rem;
+    padding: 1rem;
 }

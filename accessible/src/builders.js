@@ -42,7 +42,9 @@ function editor({dispatch, path, content}) {
 
 function listItem({dispatch, path, item}, goBack=false) {
     let li = document.createElement("li");
-    li.appendChild(document.createTextNode(goBack ? "/..." : item));
+    let p = document.createElement("p");
+    p.appendChild(document.createTextNode(goBack ? "/..." : item));
+    li.appendChild(p);
     li.addEventListener("click", () => {
         console.log("move");
         dispatch(processPath(path, item), "move");
@@ -62,8 +64,10 @@ function listItem({dispatch, path, item}, goBack=false) {
 
 function newEltField(path, dispatch) {
     let div = document.createElement("div");
+    div.setAttribute("id", "create-element");
     let i = document.createElement("input");
     i.setAttribute("type", "text");
+    i.setAttribute("placeholder", "Input the name of dir or file");
     let button = document.createElement("button");
     button.addEventListener("click", () => {
         let name = i.value;
@@ -86,6 +90,7 @@ function actionButton({dispatch, path, action, text}, elt) {
 
 function buttonRow({dispatch, path}, elt) {
     let div = document.createElement("div");
+    div.setAttribute('id', 'button-row');
     let backButton = actionButton({dispatch, path: parentPath(path), action: "move", text: "Back"});
     let resetButton = actionButton({dispatch, path, action: "move", text: "Reset"});
     let submitButton = actionButton({dispatch, path, action: "update", text: "Submit"}, elt);
