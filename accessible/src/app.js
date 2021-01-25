@@ -7,7 +7,7 @@ export class App {
         this.UI = new UI(state, dispatch);
     }
     syncState(state) {
-        this.state = state;
+        this.state = Object.assign({}, this.state, state);
         this.UI.updateState(this.state);
         document.querySelector('#manager').replaceWith(this.UI.dom);
     }

@@ -15,8 +15,8 @@ async function runWebsite() {
         },
     };
 
-    let app = new App(state, async function updateState(path, action) {
-        let state = await createState(path, action);
+    let app = new App(state, async function updateState(path, action, body) {
+        let state = await createState(path, action, body);
         app.syncState(state);
     });
     document.body.appendChild(app.UI.dom);
