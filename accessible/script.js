@@ -3,7 +3,7 @@ import { createState } from './src/helpers.js';
 import {req} from './src/request_handler.js';
 
 
-async function runWebsite() {
+async function main() {
     let initialContent = await req.GET('/');
     initialContent = initialContent.split('\n');
 
@@ -22,4 +22,4 @@ async function runWebsite() {
     document.body.appendChild(app.UI.dom);
 }
 
-runWebsite();
+main();

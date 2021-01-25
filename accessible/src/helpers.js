@@ -7,11 +7,11 @@ function determineEndpoint(path) {
     return "dir";
 }
 
-async function resultsForPath(path) {
-    let results = await req.GET(path);
+async function updatedPathResults(path) {
+    let content = await req.GET(path);
     let type = determineEndpoint(path);
-    if (type === "dir") results = results.split('\n');
-    return {results, type};
+    if (type === "dir") content = content.split('\n');
+    return {content, type};
 }
 
 export async function createState(path, action, body) {
@@ -42,9 +42,9 @@ export async function createState(path, action, body) {
             console.log("Moved to " + path)
             break;
     }
-    let {results, type} = await resultsForPath(path);
+    let {content, type} = await updatedPathResults(path);
     state.results = {
-        content: results,
+        content,
         type
     };
     return state;

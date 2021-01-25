@@ -14,13 +14,17 @@ export function fileManager(state, dispatch) {
 function fileList(dispatch, path, content) {
     let div = document.createElement("div");
     let ul = document.createElement("ul");
+    // Tile used to go back
     if (path !== '/') {
         let backTile = listItem({dispatch, path: parentPath(path), item: ""}, true);
         ul.appendChild(backTile);
     }
-    for (let item of content) {
-        let li = listItem({dispatch, path, item});
-        ul.appendChild(li);
+    // Check if there are any items
+    if (content[0]) {
+        for (let item of content) {
+            let li = listItem({dispatch, path, item});
+            ul.appendChild(li);
+        }
     }
     let neField = newEltField(path, dispatch);
     [ul, neField].forEach(el => div.appendChild(el));
@@ -50,6 +54,7 @@ function listItem({dispatch, path, item}, goBack=false) {
             event.stopPropagation();
             dispatch(processPath(path, item), "delete");
         })
+        button.appendChild(document.createTextNode("Delete"));
         li.appendChild(button);
     }
     return li;
